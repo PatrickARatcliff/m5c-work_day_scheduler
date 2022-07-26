@@ -1,4 +1,6 @@
+//set variable for todays date
 var today = moment();
+//set text content of current day div to "today" in long format
 $("#currentDay").text("Today is " + today.format("dddd, MMMM Do YYYY"));
 var container = document.getElementById("container")
 var currentHour = moment().format("HH");
@@ -14,14 +16,10 @@ var input14 = $("#input14");
 var input15 = $("#input15");
 var input16 = $("#input16");
 var input17 = $("#input17");
-//document.getElementById("#input10");
-//document.getElementById("#input11");
-//document.getElementById("#input12");
-//document.getElementById("#input13");
-//document.getElementById("#input14");
-//document.getElementById("#input15");
-//document.getElementById("#input16");
-//document.getElementById("#input17");
+//pull and set local storage as an array
+var apptInfo = JSON.parse(localStorage.getItem("apptInfo")) || [];
+//confirmation (after save) info at bottom of page
+var confirmation = $(".confirm");
 
 $(document).ready(function() {
     //add css class (past/present/future) to row based on current hour 
@@ -104,14 +102,113 @@ $(document).ready(function() {
         } 
         else {
             $(input17.addClass("future"));
-        };
-   // };
-              
+        };       
 });
-
-//var apptInfo = JSON.parse(localStorage.getItem("apptInfo")) || [];
-
-
-
-
-
+//functions for save button clicks for each row
+//9 am save button
+$("#saveBtn09").on("click", function () {
+    apptInfo.push({
+      time: "9AM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    $(confirmation).text("An appointment has been set for " + $(this).prev().val() + " at 9AM");
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
+//10am save button
+$("#saveBtn10").on("click", function () {
+    
+    apptInfo.push({
+      time: "10AM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    $(confirmation).text("An appointment has been set for " + $(this).prev().val() + " at 10AM");
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
+//11am save button
+$("#saveBtn11").on("click", function () {
+    apptInfo.push({
+      time: "11AM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
+//12pm save button
+$("#saveBtn12").on("click", function () {
+    apptInfo.push({
+      time: "12PM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
+//1pm save button
+$("#saveBtn13").on("click", function () {
+    apptInfo.push({
+      time: "1PM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
+//2pm save button
+$("#saveBtn14").on("click", function () {
+    apptInfo.push({
+      time: "2PM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
+//3pm save button
+$("#saveBtn15").on("click", function () {
+    apptInfo.push({
+      time: "3PM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
+//4pm save button
+$("#saveBtn16").on("click", function () {
+    apptInfo.push({
+      time: "4PM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+});
+//5pm save button
+$("#saveBtn17").on("click", function () {
+    apptInfo.push({
+      time: "5PM",
+      appt: $(this).prev().val(),
+    });
+    localStorage.setItem("apptInfo", JSON.stringify(apptInfo));
+    //clear input field for next entry
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
+});
